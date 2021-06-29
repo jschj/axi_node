@@ -57,6 +57,8 @@ module axi_node_arbiter #(
   assign oup_id_o = oup_meta.id;
   assign oup_aux_o = oup_meta.aux;
 
+  $display("CUSTOM: axi_meta_t size = %d", $bits(axi_meta_t));
+
 // pragma translate_off
 `ifndef VERILATOR
   initial begin: p_assertions
