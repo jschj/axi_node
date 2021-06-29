@@ -57,8 +57,13 @@ module axi_node_arbiter #(
   assign oup_id_o = oup_meta.id;
   assign oup_aux_o = oup_meta.aux;
 
-  assert ($bits(axi_meta_t) != 0) else $fatal("WTF %d", $bits(axi_meta_t));
+  //assert ($bits(axi_meta_t) != 0) else $fatal("WTF %d", $bits(axi_meta_t));
   //$display("CUSTOM: axi_meta_t size = %d", $bits(axi_meta_t));
+  generate
+    if ($bits(axi_meta_t) != 0) begin
+        illegal_parameter_condition_triggered_will_instantiate_an non_existing_module();
+    end
+  endgenerate
 
 // pragma translate_off
 `ifndef VERILATOR
